@@ -5,6 +5,19 @@
  It's been a long time since I worked on this game, but the idea from what I remember was similar to other idle games, like [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/), where you are constantantly trying to get more and more of *something*, in this game's case — eggs.
 
 Essentially, your Inventory starts with a single Golden Egg, which when hatched has a 100% chance of hatching a chicken. The chickens will lay normal eggs every so often, which can then be hatched for a chance to get another chicken. You could assign jobs to the chickens to have them collect new resources, allowing you to create new items.
+
+# Inventory
+The inventory is a grid of slots, each capable of holding a single type of item.
+
+![image](https://user-images.githubusercontent.com/44419210/122652849-e572c100-d0f5-11eb-9eb9-c7a8abdc5034.png)
+
+Double-clicking on an item opens a window, displaying the details and operations available for that item.
+
+![image](https://user-images.githubusercontent.com/44419210/122652920-55814700-d0f6-11eb-820a-bf052dcf7e07.png)
+
+Scriptable Objects were used to easily create new items and specify what options where available for that item's info window.
+
+![image](https://user-images.githubusercontent.com/44419210/122652984-9711f200-d0f6-11eb-9433-95702b8ea696.png)
  
 # Items
 ![egg_golden](https://user-images.githubusercontent.com/44419210/122652558-53b68400-d0f4-11eb-9312-12f3cf4c379d.png) Golden Egg: *100% chance of hatching a chicken.*
