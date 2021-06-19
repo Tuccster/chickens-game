@@ -1,0 +1,91 @@
+public Item[] _allItems;
+	public GameObject[] _slots;
+	public Item[] _items;
+
+	private int _secondsElapsed = 0;
+
+	private void Start () {
+		_items = new Item[20];
+		AddItem (_allItems[0], 1);
+		StartCoroutine (ChickenMaterialProductionTimer ());
+	}
+
+	public void UpdateInventory () {
+		for (int i = 0; i < _slots.Length; i++) {
+			if (_items[i]) {
+				_slots[i].transform.GetChild (0).GetComponent<Image> ().sprite = _items[i].icon;
+				_slots[i].transform.GetChild (0).GetComponent<Image> ().color = new Color (1, 1, 1, 1);
+				if (_items[i].curStack > 1) _slots[i].transform.GetChild (1).GetComponent<Text> ().text = _items[i].curStack.ToString ();
+			} else _slots[i].transform.GetChild (0).GetComponent<Image> ().color = new Color (1, 1, 1, 0);
+		}
+	}
+
+	public void AddItem (Item item, int amount) {
+		//FIRST PASS TO SEE IF THERE IS A STACK TO MERGE WITH
+		for (int i = 0; i < _slots.Length; i++) {
+			if (_items[i]) {
+				print (item.itemName + " / " + item.stackable + " / " + _items[i].curStack);
+				if (item.itemName == _items[i].itemName && item.stackable && _items[i].curStack + 1 < _items[i].maxStack) {
+					_items[i].curStack++;
+					UpdateInventory ();
+					return;
+				}
+			}
+		}
+
+		//SECOND PASS TO SEE IF THERE IS AN EMPTY SLOT
+		for (int i = 0; i < _slots.Length; i++) {
+			if (!_items[i]) {
+				_items[i] = item;
+				UpdateInventory ();
+				return;
+			}
+		}
+	}
+
+	private IEnumerator ChickenMaterialProductionTimer () {
+		while (true) {
+			yield return new WaitForSeconds (1);
+			_secondsElapsed++;
+			foreach (Item item in _items) {
+				if (item && item.type == Item.Type.CHICKEN && _secondsElapsed % item.rate == 0)
+					AddItem (item.product, 1);
+			}
+		}
+	}
+
+//LEGACY CODE
+
+while (amount > 0) {
+			for (int i = 0; i < _slots.Length; i++) {
+				if (_slots[i].item == item && _slots[i].amount < _slots[i].item.maxStack) {
+					if (_slots[i].amount + amount <= _slots[i].item.maxStack) {
+						_slots[i].amount += amount;
+						amount = 0;
+					} else {
+						_slots[i].amount += (_slots[i].item.maxStack - _slots[i].amount);
+						amount -= (_slots[i].item.maxStack - _slots[i].amount);
+					}
+					UpdateSlotUI(i);
+					continue;
+				}
+			}
+			if (amount > 0) {
+				for (int i = 0; i < _slots.Length; i++) {
+					if (!_slots[i].item) {
+						_slots[i].item = item;
+						if (_slots[i].amount + amount <= _slots[i].item.maxStack) {
+							_slots[i].amount += amount;
+							amount = 0;
+						} else {
+							_slots[i].amount += (_slots[i].item.maxStack - _slots[i].amount);
+							amount -= (_slots[i].item.maxStack - _slots[i].amount);
+						}
+						UpdateSlotUI(i);
+						continue;
+					}
+				}
+			}
+			print(amount);
+			yield return null;
+		}

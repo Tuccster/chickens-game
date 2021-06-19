@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9825e7c27fbbe844b590b7b7ea0d1d6, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  itemName: Stone
+  desc: Stone is a basic material used in contruction and crafting
+  itemDescAlignment: 1
+  icon: {fileID: 21300000, guid: 88873a87a81b02848aa511edee045437, type: 3}
+  maxStack: 100
+  type: 2
+  infoPanelComponents: []
+  product: {fileID: 0}
+  rate: 60
+  profession: 1
+  exclusive: []
+  slots: 6
+  value: 1
