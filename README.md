@@ -2,7 +2,7 @@
  An Idle/Inventory Management game based on chickens and eggs.
  
 # Premise
- It's been a long time since I worked on this game, but the idea from what I remember was similar to other idle games, like [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/), where you are constantantly trying to get more and more of *something*, in this game's case — eggs.
+ It's been a long time since I worked on this game, but the idea from what I remember was similar to other idle games, like [Cookie Clicker](https://orteil.dashnet.org/cookieclicker/), where you are constantantly trying to get more and more of *something*, in this game's case — eggs and money.
 
 Essentially, your Inventory starts with a single Golden Egg, which when hatched has a 100% chance of hatching a chicken. The chickens will lay normal eggs every so often, which can then be hatched for a chance to get another chicken. You could assign jobs to the chickens to have them collect new resources, allowing you to create new items.
 
